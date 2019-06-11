@@ -9,7 +9,7 @@ function createStore (reducer) {
     */
 
     // 1. Create a state to hold state of entire app
-    let state 
+    let state   // State is undefined and it'll be defined when the reducers are called.
     let listeners = [];
 
     // 2. Return state - get the current state
@@ -47,6 +47,7 @@ function createStore (reducer) {
 
 // Create a reducer function  = app codes
 // Reducer should be a pure function
+// When this reducer is called state creates an empty array inside of an empty object.
 function todos (state = [], action) {
     switch(action.type) {
         case 'ADD_TODO':
@@ -87,6 +88,8 @@ function todos (state = [], action) {
     */ 
 }
 
+// Second reducer function.
+// When this reducer is called state creates an empty array inside of an empty object.
 function goals (state = [], action) {
     switch(action.type) {
         case 'ADD_GOAL':
