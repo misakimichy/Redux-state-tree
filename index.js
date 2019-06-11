@@ -53,6 +53,42 @@ const TOGGLE_TODO = 'TOGGLE_TODO';
 const ADD_GOAL = 'ADD_GOAL';
 const REMOVE_GOAL = 'REMOVE_GOAL';
 
+// Action Creater
+function addTodoAction (todo) {
+    return {
+        type: ADD_TODO,
+        todo,
+    }
+}
+
+function removeTodoAction (id) {
+    return {
+        type: REMOVE_TODO,
+        id,
+    }
+}
+
+function toggleTodoAction (id) {
+    return {
+        type: TOGGLE_TODO,
+        id,
+    }
+}
+
+function addGoalAction (goal) {
+    return {
+        type: ADD_GOAL,
+        goal,
+    }
+}
+
+function removeGoalAction (id) {
+    return {
+        type: REMOVE_GOAL,
+        id,
+    }
+}
+
 // Creat e a reducer function  = app codes
 // Reducer should be a pure function
 // When this reducer is called state creates an empty array inside of an empty object.
@@ -138,14 +174,13 @@ const store = createStore(app);
         console.log('The new state is: ', store.getState());
 })
 
-store.dispatch({
-    type: ADD_TODO,
-    todo: {
-        id: 0,
-        name: 'Learn Redux',
-        complete: false
-    }
-})
+store.dispatch(addTodoAction({
+    id: 0,
+    name: 'Learn Redux',
+    complete: false
+}))
+
+
 
 /*
     When you execute the code above, what will happen is:
