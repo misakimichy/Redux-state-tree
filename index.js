@@ -106,20 +106,28 @@ function goals (state = [], action) {
     }
 }
 
+// Create third reducer function
+// Whatever the app returns is going to be the new state of this app.
+// When this reducer is called state creates an empty object {}.
+function app (state = {}, action) {
+    return {
+        // Invoke reducers here
+        todos: todos(state.todos, action),
+        goals: goals(state.goals, action),
+    }
+}
+
 /*
     When you invoke createStore, we want the user to be able to pass in the specific reducer function
     that's going to decide how the state should change based on the specific action that occurred.
-
 // const store = createStore(todos)
-
 */
 
 /*
-    Create createStore, you have to pass the reducer function - todos and save it.
-    Once you save it, store has three methods in it.
-    getState, subscribe and dispatch
-    */
-const store = createStore(todos);
+    Create createStore, you have to pass the reducer function.
+    Once you save it, store has three methods - getState, subscribe and dispatch
+*/
+const store = createStore(app);
     // When subscribe happens (part of the state changes), get the current state.
     store.subscribe (() => {
         console.log('The new state is: ', store.getState());
