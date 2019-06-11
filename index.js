@@ -35,7 +35,7 @@ function createStore (reducer) {
         // Create a reducer function and pass the function to createStore
         
         state = reducer(state, action)
-        listeners.forEach((listener) => listener() )
+        listeners.forEach((listener) => listener())
     }
     // 3. Whenever the createStore() is invoked, return object which gets the state.
     return {
@@ -46,12 +46,45 @@ function createStore (reducer) {
 }
 
 // Create a reducer function  = app codes
+// Reducer should be a pure function
 function todos (state = [], action) {
-    if(action.type === 'ADD_TODO') {
-        // Update state through the action occurred
-        return state.concat([action.todo]);
+    switch(action.type) {
+        case 'ADD_TODO':
+            return state.concat([action.todo])
+        case 'REMOVE_TODO':
+            return state.filter(todo =>
+                todo.id !== action.id)
+        case 'TOGGLE_TODO':
+        return state.map(todo =>
+            todo.id !== action.id ? todo
+            : Object.assign({}, todo, {complete: !todo.complete}))
+        default :
+            return state;
     }
-    return state;
+
+    /*  The above statement is same as the following if statement.
+
+        if(action.type === 'ADD_TODO') {
+            // Update state through the action occurred
+            return state.concat([action.todo]);
+
+        } else if(action.type === 'REMOVE_TODO') {
+            // Filter out todo which doesn't have action
+            return state.filter(todo =>
+                todo.id !== action.id)
+
+        } else if(action.type === 'TOGGLE_TODO') {
+            // Update the complete property from false to true
+            return state.map(todo =>
+                todo.id !== action.id ? todo
+                // Create a new empty object and merge with todo
+                // except for complete which is going to be the opposite of what complete currently is
+                : Object.assign({}, todo, {complete: !todo.complete}))
+
+        } else {
+            return state;
+        }
+    */ 
 }
 
 /*
