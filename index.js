@@ -180,7 +180,28 @@ store.dispatch(addTodoAction({
     complete: false
 }))
 
+store.dispatch(addTodoAction({
+    id: 1,
+    name: 'Go to dentist',
+    complete: false
+}))
 
+store.dispatch(addTodoAction({
+    id: 2,
+    name: 'Call mom',
+    complete: false
+}))
+
+store.dispatch(removeTodoAction(1))
+
+store.dispatch(toggleTodoAction(0))
+
+store.dispatch(addGoalAction({
+    id: 0,
+    name: 'Finish React Nanodegree',
+}))
+
+store.dispatch(removeGoalAction(0))
 
 /*
     When you execute the code above, what will happen is:
