@@ -102,7 +102,7 @@ function goals (state = [], action) {
     }
 }
 /*
-    Create third reducer function.
+    Create a root reducer.
     Since createStore() cannot take two arguments, make another function to invoke todos and goals.
     When this reducer is called state creates an empty object {}.
 */
@@ -121,7 +121,7 @@ function app (state = {}, action) {
 */
 
 /*
-    Create createStore, you have to pass the reducer function.
+    Create createStore and pass a root reducer.
     Once you save it, store has three methods - getState, subscribe and dispatch
 */
 const store = createStore(app);
