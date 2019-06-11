@@ -1,3 +1,8 @@
+// generate random id
+function generateId() {
+    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+}
+
 // Think this function as a state management library
 function createStore (reducer) {
     /*
@@ -174,37 +179,67 @@ const store = createStore(app);
         console.log('The new state is: ', store.getState());
 })
 
-store.dispatch(addTodoAction({
-    id: 0,
-    name: 'Learn Redux',
-    complete: false
-}))
+// store.dispatch(addTodoAction({
+//     id: 0,
+//     name: 'Learn Redux',
+//     complete: false
+// }))
 
-store.dispatch(addTodoAction({
-    id: 1,
-    name: 'Go to dentist',
-    complete: false
-}))
+// store.dispatch(addTodoAction({
+//     id: 1,
+//     name: 'Go to dentist',
+//     complete: false
+// }))
 
-store.dispatch(addTodoAction({
-    id: 2,
-    name: 'Call mom',
-    complete: false
-}))
+// store.dispatch(addTodoAction({
+//     id: 2,
+//     name: 'Call mom',
+//     complete: false
+// }))
 
-store.dispatch(removeTodoAction(1))
+// store.dispatch(removeTodoAction(1))
 
-store.dispatch(toggleTodoAction(0))
+// store.dispatch(toggleTodoAction(0))
 
-store.dispatch(addGoalAction({
-    id: 0,
-    name: 'Finish React Nanodegree',
-}))
+// store.dispatch(addGoalAction({
+//     id: 0,
+//     name: 'Finish React Nanodegree',
+// }))
 
-store.dispatch(removeGoalAction(0))
+// store.dispatch(removeGoalAction(0))
 
 /*
     When you execute the code above, what will happen is:
     - the todo of id: 0 will be added
     because we specified the action type 'ADD_TODO' in function todos.
 */ 
+
+function addTodo() {
+    const input = document.getElementById('todo');
+    const name = input.value;
+    input.value = ''
+
+    store.dispatch(addTodoAction({
+        name,
+        complete: false,
+        id: generateId()
+    }))
+}
+
+function addGoal() {
+    const input = document.getElementById('goal');
+    const name = input.value;
+    input.value = ''
+    store.dispatch(addGaolAction({
+        name,
+        complete: false,
+        id: generateId()
+    }))
+}
+
+document.getElementById('todoButton')
+    .addEventListener('click', addTodo)
+
+document.getElementById('goalButton')
+    .addEventListener('click', addTodo)
+    
