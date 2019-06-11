@@ -97,18 +97,15 @@ function goals (state = [], action) {
         case 'REMOVE_GOAL':
             return state.filter(goal =>
             goal.id !== action.id)
-        case 'TOGGLE_GOAL':
-            return state.map(goal =>
-                goal.id !== action.id ? goal
-                : Object.assign({}, goal, {complete: !goal.complete}))
         default :
             return state;
     }
 }
-
-// Create third reducer function
-// Whatever the app returns is going to be the new state of this app.
-// When this reducer is called state creates an empty object {}.
+/*
+    Create third reducer function.
+    Since createStore() cannot take two arguments, make another function to invoke todos and goals.
+    When this reducer is called state creates an empty object {}.
+*/
 function app (state = {}, action) {
     return {
         // Invoke reducers here
