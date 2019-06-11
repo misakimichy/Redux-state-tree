@@ -15,7 +15,7 @@ function createStore (reducer) {
     // 2. Return state - get the current state
     const getState = () => state;
 
-    // When the listener happens, the part of state will change.
+    // When the listener happens, part of the state will change.
     const subscribe = (listener) => {
         listeners.push(listener)
         return () => {
@@ -58,7 +58,7 @@ function todos (state = [], action) {
     When you invoke createStore, we want the user to be able to pass in the specific reducer function
     that's going to decide how the state should change based on the specific action that occurred.
 
-// const sotre = createStore(todos)
+// const store = createStore(todos)
 
 */
 
@@ -83,7 +83,7 @@ store.dispatch({
 })
 
 /*
-    When you execute the codes above, what will happen is :
-    - the id: 0 todo is added
-    because we specified the type 'ADD_TODO' in function todos.
+    When you execute the code above, what will happen is:
+    - the todo of id: 0 will be added
+    because we specified the action type 'ADD_TODO' in function todos.
 */ 
