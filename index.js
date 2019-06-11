@@ -87,6 +87,22 @@ function todos (state = [], action) {
     */ 
 }
 
+function goals (state = [], action) {
+    switch(action.type) {
+        case 'ADD_GOAL':
+            return state.concat([action.goal])
+        case 'REMOVE_GOAL':
+            return state.filter(goal =>
+            goal.id !== action.id)
+        case 'TOGGLE_GOAL':
+            return state.map(goal =>
+                goal.id !== action.id ? goal
+                : Object.assign({}, goal, {complete: !goal.complete}))
+        default :
+            return state;
+    }
+}
+
 /*
     When you invoke createStore, we want the user to be able to pass in the specific reducer function
     that's going to decide how the state should change based on the specific action that occurred.
