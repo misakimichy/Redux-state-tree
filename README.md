@@ -61,4 +61,15 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 
     2) Inside of `addTodoToDOM` and `addGoalToDOM` function, call the `createRemoveButton` function which function will dispatch `removeTodoAction` and `removeGoalAction`.
 
-    3) Inside of the `addTodoToDOM` and `addGoalToDOM` function, append the 
+    3) Inside of the `addTodoToDOM` and `addGoalToDOM` function, append the remove button.
+
+10. Download real Redux library.
+    1) Install Redux library in index.html
+
+    2) Delete all of the library code in index.js.
+
+    3) Add `Redux.` to the `store = createStore();`
+
+    4) Delete `app` reducer function since a root reducer comes with the library.
+
+    5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
