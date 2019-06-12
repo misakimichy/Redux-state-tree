@@ -249,4 +249,20 @@ document.getElementById('todoButton')
 
 document.getElementById('goalButton')
     .addEventListener('click', addTodo)
-    
+
+// Add funcrtion
+function addTodoToDOM(todo) {
+    const node = document.createElement('li')
+    const text = document.createTextNode(todo.name)
+    node.appendChild(text)
+
+    document.getElementById('todos').appendChild(node)
+}
+
+function addGoalToDOM(goal) {
+    const node = document.createElement('li')
+    const text = document.createTextNode(goal.name)
+    node.appendChild(text)
+
+    document.getElementById('goals').append(node)
+}
