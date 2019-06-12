@@ -174,9 +174,16 @@ function app (state = {}, action) {
     Once you save it, store has three methods - getState, subscribe and dispatch
 */
 const store = createStore(app);
-    // When subscribe happens (part of the state changes), get the current state.
-    store.subscribe (() => {
-        console.log('The new state is: ', store.getState());
+// When subscribe happens (part of the state changes), get the current state.
+store.subscribe (() => {
+    const { goals, todos } = store.getState()
+
+    // Reset goals and todos every time the state has changed. 
+    document.getElementById('goals').innerHTML = '';
+    document.getElementById('todos').innerHTML = '';
+
+    goals.forEach(addGoalToDOM)
+    todos.forEach(addTodoToDOM)
 })
 
 // store.dispatch(addTodoAction({
