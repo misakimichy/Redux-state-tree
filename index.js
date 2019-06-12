@@ -251,11 +251,31 @@ document.getElementById('todoButton')
 document.getElementById('goalButton')
     .addEventListener('click', addGoal)
 
+// Add feature to remove item
+function createRemoveButton(onClick) {
+    const removeButton = document.createElement('button')
+    removeButton.innerHTML = 'X'
+    removeButton.addEventListener('click', onClick)
+    return removeButton
+}
+
 // Add function
 function addTodoToDOM(todo) {
     const node = document.createElement('li')
     const text = document.createTextNode(todo.name)
+
+    const removeButton = createRemoveButton(() => {
+        store.dispatch(removeTodoAction(todo.id))
+    })
+
     node.appendChild(text)
+    node.appendChild(removeButton)
+
+    // If complete status is true, line-through the item
+    node.style.textDecoration = todo.complete ? 'line-through' : 'none'
+    node.addEventListener('click', () => {
+        store.dispatch(toggleTodoAction(todo.id))
+    })
 
     document.getElementById('todos').appendChild(node)
 }
@@ -263,7 +283,11 @@ function addTodoToDOM(todo) {
 function addGoalToDOM(goal) {
     const node = document.createElement('li')
     const text = document.createTextNode(goal.name)
-    node.appendChild(text)
+    const removeButton = createRemoveButton(() => {
+        store.dispatch(removeGoalAction(goal.id))
+    })
 
+    node.appendChild(text)
+    node.appendChild(removeButton)
     document.getElementById('goals').append(node)
 }
