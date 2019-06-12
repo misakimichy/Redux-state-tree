@@ -74,7 +74,7 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 
     5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
 
-    11. Add middleware.
+11. Create a function to avoid a specific word
     1) Add a function named `checkAndDispatch`.
 
     2) This function should be hooked into the moment after an action is dispatched, but before it ever hits our reducer and modifies the state.
@@ -82,3 +82,8 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
     3) This function check the name property on the action contains the word "ripple". If user types the word, this function will show alert and do nothing. If it doesn't contain the word, it calls `store.dispatch` as it normally would passing in the action.
 
     4) Swap `store.dispatch` inside of `addTodo`, `addGoal`, `addTodoToDOM` and `addGoalToDOM` call with `checkAndDispatch(state, )`. Since the `checkAndDispatch` function takes store and action, you need to pass store.
+
+12. Use Redux middleware
+    1) Instead of using step 11, use Redux middleware. Create a function names `checker`. This takes store as a first argument. return function which takes next. This means if there is a next action, move there.
+
+    2) Add second argument for store variable. After the first argument, which is reducers, pass `Redux.applyMiddleware(checker)`.
