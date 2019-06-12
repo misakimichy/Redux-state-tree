@@ -3,52 +3,54 @@ function generateId() {
     return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
 }
 
-// Think this function as a state management library
-function createStore (reducer) {
-    /*
-    Store has to have four parts:
-    1. The state
-    2. Get the state
-    3. Listen to changes on the state.
-    4. Update the state
-    */
+//  Don't need this library code since I installed Redux library in index.html
+//     // Think this function as a state management library
+//     function createStore (reducer) {
+//         /*
+//         Store has to have four parts:
+//         1. The state
+//         2. Get the state
+//         3. Listen to changes on the state.
+//         4. Update the state
+//         */
 
-    // 1. Create a state to hold state of entire app
-    let state   // State is undefined and it'll be defined when the reducers are called.
-    let listeners = [];
+//         // 1. Create a state to hold state of entire app
+//         let state   // State is undefined and it'll be defined when the reducers are called.
+//         let listeners = [];
 
-    // 2. Return state - get the current state
-    const getState = () => state;
+//         // 2. Return state - get the current state
+//         const getState = () => state;
 
-    // When the listener happens, part of the state will change.
-    const subscribe = (listener) => {
-        listeners.push(listener)
-        return () => {
-            listeners = listeners.filter(l => l !== listener);
-        }
-    }
+//         // When the listener happens, part of the state will change.
+//         const subscribe = (listener) => {
+//             listeners.push(listener)
+//             return () => {
+//                 listeners = listeners.filter(l => l !== listener);
+//             }
+//         }
 
-    // Receive the action and dispatch the specific event that occurred inside of the app
-    const dispatch = (action) => {
-        /*
-            As you think this scope is a library code that you install through npm,
-            Accessing to a specific code (including todos) is weird. 
-        
-        // state = todos(stat, action)
-        */
+//         // Receive the action and dispatch the specific event that occurred inside of the app
+//         const dispatch = (action) => {
+//             /*
+//                 As you think this scope is a library code that you install through npm,
+//                 Accessing to a specific code (including todos) is weird. 
+            
+//             // state = todos(stat, action)
+//             */
 
-        // Create a reducer function and pass the function to createStore
-        
-        state = reducer(state, action)
-        listeners.forEach((listener) => listener())
-    }
-    // 3. Whenever the createStore() is invoked, return object which gets the state.
-    return {
-        getState,
-        subscribe,
-        dispatch,
-    }
-}
+//             // Create a reducer function and pass the function to createStore
+            
+//             state = reducer(state, action)
+//             listeners.forEach((listener) => listener())
+//         }
+//         // 3. Whenever the createStore() is invoked, return object which gets the state.
+//         return {
+//             getState,
+//             subscribe,
+//             dispatch,
+//         }
+//     }
+
 
 // App Code
 // Instead of using strings, use values.
@@ -155,13 +157,13 @@ function goals (state = [], action) {
     Since createStore() cannot take two arguments, make another function to invoke todos and goals.
     When this reducer is called state creates an empty object {}.
 */
-function app (state = {}, action) {
-    return {
-        // Invoke reducers here
-        todos: todos(state.todos, action),
-        goals: goals(state.goals, action),
-    }
-}
+// function app (state = {}, action) {
+//     return {
+//         // Invoke reducers here
+//         todos: todos(state.todos, action),
+//         goals: goals(state.goals, action),
+//     }
+// }
 
 /*
     When you invoke createStore, we want the user to be able to pass in the specific reducer function
