@@ -33,11 +33,9 @@ function generateId() {
 //         const dispatch = (action) => {
 //             /*
 //                 As you think this scope is a library code that you install through npm,
-//                 Accessing to a specific code (including todos) is weird. 
-            
-//             // state = todos(stat, action)
+//                 Accessing to a specific code (including todos) is weird.
+//                 state = todos(stat, action)
 //             */
-
 //             // Create a reducer function and pass the function to createStore
             
 //             state = reducer(state, action)
@@ -175,7 +173,11 @@ function goals (state = [], action) {
     Create createStore and pass a root reducer.
     Once you save it, store has three methods - getState, subscribe and dispatch
 */
-const store = createStore(app);
+const store = Redux.createStore(Redux.combineReducers({
+    todos,
+    goals,
+}));
+
 // When subscribe happens (part of the state changes), get the current state.
 store.subscribe (() => {
     const { goals, todos } = store.getState()
