@@ -2,7 +2,7 @@
 
 ## Instructions
 This is a Redux lesson of Udacity React Nanodegree. It's a personal note how index.js was built. I also left all the comments and old codes in index.js.
-The basic flow is create the store, merge state with UI and convert it to Redux.
+The basic flow is create the store, merge state with UI, convert it to Redux then add middleware.
 
 In this lesson, created custom Redux code first.
 
@@ -73,3 +73,12 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
     4) Delete `app` reducer function since a root reducer comes with the library.
 
     5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
+
+    11. Add middleware.
+    1) Add a function named `checkAndDispatch`.
+
+    2) This function should be hooked into the moment after an action is dispatched, but before it ever hits our reducer and modifies the state.
+
+    3) This function check the name property on the action contains the word "ripple". If user types the word, this function will show alert and do nothing. If it doesn't contain the word, it calls `store.dispatch` as it normally would passing in the action.
+
+    4) Swap `store.dispatch` inside of `addTodo`, `addGoal`, `addTodoToDOM` and `addGoalToDOM` call with `checkAndDispatch(state, )`. Since the `checkAndDispatch` function takes store and action, you need to pass store.
