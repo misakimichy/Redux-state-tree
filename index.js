@@ -58,7 +58,7 @@ const TOGGLE_TODO = 'TOGGLE_TODO';
 const ADD_GOAL = 'ADD_GOAL';
 const REMOVE_GOAL = 'REMOVE_GOAL';
 
-// Action Creater
+// Action Creator
 function addTodoAction (todo) {
     return {
         type: ADD_TODO,
@@ -221,6 +221,7 @@ store.subscribe (() => {
     because we specified the action type 'ADD_TODO' in function todos.
 */ 
 
+// DOM code
 function addTodo() {
     const input = document.getElementById('todo');
     const name = input.value;
@@ -237,9 +238,9 @@ function addGoal() {
     const input = document.getElementById('goal');
     const name = input.value;
     input.value = ''
-    store.dispatch(addGaolAction({
+    
+    store.dispatch(addGoalAction({
         name,
-        complete: false,
         id: generateId()
     }))
 }
@@ -248,9 +249,9 @@ document.getElementById('todoButton')
     .addEventListener('click', addTodo)
 
 document.getElementById('goalButton')
-    .addEventListener('click', addTodo)
+    .addEventListener('click', addGoal)
 
-// Add funcrtion
+// Add function
 function addTodoToDOM(todo) {
     const node = document.createElement('li')
     const text = document.createTextNode(todo.name)
