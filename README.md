@@ -27,4 +27,10 @@ This is a Redux lesson of Udacity React Nanodegree.
 - To prevent typos, save each action type string in variables and pass those variables in each Action Creater.
 
 
-4. 
+4. Connect js with HTML
+- Insert script tag in `index.html` and add basic UI for todo and goal list.
+
+
+5. Add eventListener to the add button.
+- When the add button is clicked, item should be added. Don't forget to comment out `state.dipatch(...Action())`. You can see if the items are added or not on console of dev tool, since `store.subscribe` method calls console.log.
+
