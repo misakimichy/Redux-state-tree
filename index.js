@@ -163,13 +163,23 @@ function goals (state = [], action) {
 //     }
 // }
 
+// You cannot use the word 'Bitcoin' in this example. Check it and if user typed in the word, show alert.
+// Hook into after an action is dispatched but before it hits reducer and modifies the state.
+function checkAndDispatch(store, action) {
+    if(action.type === ADD_TODO && action.todo.name.toLowerCase().includes('ripple')) {
+        return alert("Nope, that's not a good idea.")
+    }
+    if(action.type === ADD_GOAL && action.goal.name.toLowerCase().includes('ripple')) {
+        return alert("Nope, that's not a good idea.")
+    }
+    return store.dispatch(action);
+}
+
 /*
     When you invoke createStore, we want the user to be able to pass in the specific reducer function
     that's going to decide how the state should change based on the specific action that occurred.
 // const store = createStore(todos)
-*/
 
-/*
     Create createStore and pass a root reducer.
     Once you save it, store has three methods - getState, subscribe and dispatch
 */
@@ -231,7 +241,7 @@ function addTodo() {
     const name = input.value;
     input.value = ''
 
-    store.dispatch(addTodoAction({
+    checkAndDispatch(store, addTodoAction({
         name,
         complete: false,
         id: generateId()
@@ -243,7 +253,7 @@ function addGoal() {
     const name = input.value;
     input.value = ''
     
-    store.dispatch(addGoalAction({
+    checkAndDispatch(store, addGoalAction({
         name,
         id: generateId()
     }))
@@ -269,7 +279,7 @@ function addTodoToDOM(todo) {
     const text = document.createTextNode(todo.name)
 
     const removeButton = createRemoveButton(() => {
-        store.dispatch(removeTodoAction(todo.id))
+        checkAndDispatch(store, removeTodoAction(todo.id))
     })
 
     node.appendChild(text)
@@ -278,7 +288,7 @@ function addTodoToDOM(todo) {
     // If complete status is true, line-through the item
     node.style.textDecoration = todo.complete ? 'line-through' : 'none'
     node.addEventListener('click', () => {
-        store.dispatch(toggleTodoAction(todo.id))
+        checkAndDispatch(store, toggleTodoAction(todo.id))
     })
 
     document.getElementById('todos').appendChild(node)
@@ -288,7 +298,7 @@ function addGoalToDOM(goal) {
     const node = document.createElement('li')
     const text = document.createTextNode(goal.name)
     const removeButton = createRemoveButton(() => {
-        store.dispatch(removeGoalAction(goal.id))
+        checkAndDispatch(state, removeGoalAction(goal.id))
     })
 
     node.appendChild(text)
