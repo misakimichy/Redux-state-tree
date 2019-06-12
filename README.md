@@ -66,7 +66,7 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 10. Download real Redux library.
     1) Install Redux library in index.html
 
-    2) Delete all of the library code in index.js.
+    2) Delete all of the library code in index.js. (I left old codes so that I can reflect lator.)
 
     3) Add `Redux.` to the `store = createStore();`
 
