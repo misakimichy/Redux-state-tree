@@ -35,14 +35,18 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
     1) When the add button is clicked, item should be added. Don't forget to comment out `state.dispatch(...Action())`. You can see if the items are added or not on console of dev tool, since `store.subscribe` method calls console.log.
 
 
-6. Create `addTodo` and `addGoal` function.
-    1) When the the add button is clicked, either function is invoked (depends on which button you've clicked). This function will add a new item to the state.
-    This method will extract the info from the input field, and then dispatch an `addTodoAction` or `addGoalAction` Action Creator with the text that user typed into the input field.
+6. Make add buttons work.
+    1) When the the add button is clicked, either function, `addTodo` or `addGoal`, is invoked (depends on the button clicked). This function will add a new item to the state.
 
-    2) 
+    2) This method will extract the info from the input field, and then dispatch an `addTodoAction` or `addGoalAction` Action Creator with the text that user typed into the input field.
 
-
-7. Update store
-    1) Instead of console.log, we need to update the store. To update store, create two functions called `addTodoToDOM` and `addGoalToDOM`.
+7. Show added items on UI.
+    1) Instead of using console.log inside of `store.subscribe()`, we need to update the store. To update store, create two functions called `addTodoToDOM` and `addGoalToDOM`.
 
     2) `addTodoToDOM` and `addGoalToDOM` create list element and text node, and append these.
+
+
+8. Toggle the added item.
+    1) If the complete status of todo list is true, line-through the item. If not, return the current status.
+    
+    2) And also when you click the item, line-through the item.
