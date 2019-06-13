@@ -113,4 +113,14 @@ In this lesson, created custom Redux code first.
 14. Connect Redux with React.
     1) Add `<script>` tags after Redux script tag in `<head>` in index.html. To connect Redux with React, I used React, React-DOM, and babel to transpile or compile the JSX code into normal JavaScript that the browser can understand.
 
-    2) Add babel codes.
+    2) Add `<div>` with `id=app` so that you can update the element via JavaScript code.
+
+    3) Add babel codes after index.js line in index.html. Make classes names `App`, `Todos` and `Goals`.
+
+    4) Create React ver of UI (The one you're seeing on the screen is written by vanilla JavaScript).
+
+    5) Use uncontrolled component for the Todo class input field. For the onClick event of add buttons, create `addItem` function. What we wrote for adding item with JavaScript is dispatching the action.
+
+    6) Pass `store` as `App`'s props.
+
+    7) You can import `store.dispatch` from vanilla JavaScript. But since you've passed store as a App's props, swap it with `this.props.store.dispatch`.
