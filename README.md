@@ -23,7 +23,7 @@ In this lesson, created custom Redux code first.
     2) Create `app` to combine two reducers. `createStore()` cannot take two or more arguments so you need to create a root reducer.
 
 
-3. Create Action Creator
+3. Create Action Creator.
     1) Instead of keep adding items using `store.dispatch`, create Action Creators depends on the action type.
 
     2) To prevent typos, save each action type string in variables and pass those variables in each Action Creator.
@@ -50,7 +50,7 @@ In this lesson, created custom Redux code first.
     2) `addTodoToDOM` and `addGoalToDOM` create list element and text node, and append these.
 
 
-8. Add feature to line-through todo item
+8. Add feature to line-through todo item.
     1) If the complete status of todo list is true, line-through the item. If not, return the current status.
     
     2) And also when you click the item, line-through the item.
@@ -76,7 +76,7 @@ In this lesson, created custom Redux code first.
     5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
 
 
-11. Create a function to avoid a specific word
+11. Create a function to avoid a specific word,
     1) Add a function named `checkAndDispatch`.
 
     2) This function should be hooked into the moment after an action is dispatched, but before it ever hits our reducer and modifies the state.
@@ -98,7 +98,7 @@ In this lesson, created custom Redux code first.
     5) Rewrite the checker function using an arrow function to make code clean.
 
 
-13. Add multiple middleware
+13. Add multiple middleware.
     1) Add second middleware named `logger`. This acts like a development middleware. This will console.log whenever an action is dispatched, you'll see what action is and what is the new state once the action was dispatched.
 
     2) It'll `console.group()` and the title of this group is `action.type`. `console.group()` is going to group everything between that first `console.group()` invocation and `console.groupEnd()` invocation. `console.log` the action.
@@ -108,3 +108,9 @@ In this lesson, created custom Redux code first.
     4) Since I added one more middleware, add `logger` to `applyMiddleware`'s second argument.
 
     5) Now once `createStore` is called, before it hits reducers, it invokes `checker` and `logger` middleware.
+
+
+14. Connect Redux with React.
+    1) Add `<script>` tags after Redux script tag in `<head>` in index.html. To connect Redux with React, I used React, React-DOM, and babel to transpile or compile the JSX code into normal JavaScript that the browser can understand.
+
+    2) Add babel codes.
