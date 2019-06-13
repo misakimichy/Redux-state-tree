@@ -63,6 +63,7 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 
     3) Inside of the `addTodoToDOM` and `addGoalToDOM` function, append the remove button.
 
+
 10. Download real Redux library.
     1) Install Redux library in index.html
 
@@ -74,6 +75,7 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 
     5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
 
+
 11. Create a function to avoid a specific word
     1) Add a function named `checkAndDispatch`.
 
@@ -83,7 +85,14 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
 
     4) Swap `store.dispatch` inside of `addTodo`, `addGoal`, `addTodoToDOM` and `addGoalToDOM` call with `checkAndDispatch(state, )`. Since the `checkAndDispatch` function takes store and action, you need to pass store.
 
-12. Use Redux middleware
-    1) Instead of using step 11, use Redux middleware. Create a function names `checker`. This takes store as a first argument. return function which takes next. This means if there is a next action, move there.
 
-    2) Add second argument for store variable. After the first argument, which is reducers, pass `Redux.applyMiddleware(checker)`.
+12. Use Redux middleware.
+    1) Instead of using step 11, use Redux middleware. Create a function names `checker`. This takes store as a first argument. return function which is passed next. This going to be the next middleware if we have more than one middleware , or it's going to be dispatch. Then it return another function which is going to be passed the action. Copy and paste the action inside of `checkAndDispatch()` function. And delete `checkAndDispatch()` function.
+
+    2) Instead of calling store.dispatch() inside of `function(action)`, call `next(action)`.
+
+    3) Swap what we did at step 11 4). Use `store.dispatch` and delete `checkAndDispatch(state, )`.
+
+    4) Add second argument to createStore. After the first argument, which is reducers, pass `Redux.applyMiddleware(checker)`.
+    
+    5) Rewrite the checker function using an arrow function to make code clean.
