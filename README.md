@@ -8,19 +8,17 @@ In this lesson, created custom Redux code first.
 
 
 1. Made state management `createStore()` function.
-When this function is invoked, it'll have three methods  getState, subscribe and dispatch.
+    1) Create a function called `createStore()` inside index.js When this function is invoked, it'll have three methods  getState, subscribe and dispatch.
 
-    1) `getState` returns the current state.
+    2) `getState` returns the current state.
 
-    2) `dispatch` takes action and returns state which is populated by reducer. It loops through the each listeners and returns listener.
+    3) `dispatch` takes action and returns state which is populated by reducer. It loops through the each listeners and returns listener.
 
-    3) `subscribe` takes the listener and the state is updated. 
+    4) `subscribe` takes the listener and the state is updated.
 
 
 2. Create Reducers.
-There are two reducers `todos` and `goals`, and one root reducer `app` to combine these two reducers.
-
-    1) When `todos` and `goals` are invoked, the state creates an empty array (inside of the empty object which has created when `app` is invoked). Each reducer returns state depends on the `action.type`.
+    1) There are two reducers `todos` and `goals`, and one root reducer `app` to combine these two reducers. When `todos` and `goals` are invoked, the state creates an empty array (inside of the empty object which has created when `app` is invoked). Each reducer returns state depends on the `action.type`.
 
     2) Create `app` to combine two reducers. `createStore()` cannot take two or more arguments so you need to create a root reducer.
 
@@ -32,7 +30,9 @@ There are two reducers `todos` and `goals`, and one root reducer `app` to combin
 
 
 4. Connect index.js with index.html
-Insert script tag in `index.html` and add basic UI for todo and goal list.
+    1) Add elements for todo and goal list.
+    
+    2) Connect index.js in `index.html`.
 
 
 5. Add add.eventListener to the add button.
