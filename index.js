@@ -164,7 +164,7 @@ function goals (state = [], action) {
 // }
 
 // You cannot use the word 'Bitcoin' in this example. Check it and if user typed in the word, show alert.
-// Hook into after an action is dispatched but before it hits reducer and modifies the state.
+// Add a middleware
 
 const checker = store => next => action => {
     if(action.type === ADD_TODO && action.todo.name.toLowerCase().includes('ripple')) {
@@ -174,6 +174,18 @@ const checker = store => next => action => {
         return alert("Nope, that's not a good idea.")
     }
     return next(action);
+}
+
+// On console of devtool, whenever an action is dispatched, you'll see what that action is and
+// what is the new state once the action was dispatched.
+// Add second middleware
+const logger = store => next => action => {
+    console.group(action.type)
+        console.log('The action: ', action)
+        const result = next(action)
+        console.log('The new state: ', store.getState())
+    console.groupEnd()
+    return result
 }
 
 /*
@@ -187,7 +199,7 @@ const checker = store => next => action => {
 const store = Redux.createStore(Redux.combineReducers({
     todos,
     goals,
-}), Redux.applyMiddleware(checker));
+}), Redux.applyMiddleware(checker, logger));
 
 // When subscribe happens (part of the state changes), get the current state.
 store.subscribe (() => {
