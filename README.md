@@ -96,3 +96,15 @@ Insert script tag in `index.html` and add basic UI for todo and goal list.
     4) Add second argument to createStore. After the first argument, which is reducers, pass `Redux.applyMiddleware(checker)`.
     
     5) Rewrite the checker function using an arrow function to make code clean.
+
+
+13. Add multiple middleware
+    1) Add second middleware named `logger`. This acts like a development middleware. This will console.log whenever an action is dispatched, you'll see what action is and what is the new state once the action was dispatched.
+
+    2) It'll `console.group()` and the title of this group is `action.type`. `console.group()` is going to group everything between that first `console.group()` invocation and `console.groupEnd()` invocation. `console.log` the action.
+
+    3) Invoke `next(action)` here as if we are dispatching the action here. That'll allow me to get new state in the next line. Then finally it returns the result we got by invoking next.
+
+    4) Since I added one more middleware, add `logger` to `applyMiddleware`'s second argument.
+
+    5) Now once `createStore` is called, before it hits reducers, it invokes `checker` and `logger` middleware.
