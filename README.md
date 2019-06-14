@@ -133,15 +133,24 @@ In this lesson, created custom Redux code first.
 
     2) To do that. need to grab `store` which is comes from `this.props`, and `todos` and `goals` which is from `store.getState()`.
 
+
 16. Add List UI.
     1) Use map method and loop through items then show `item.name` inside of `List` component. To do that, It's needed to pass `this.props.todos` to `List` component both in `Todos` and `Goals` component.
 
     2) Add delete button for the list items. When the button is clicked, remove the item. To remove the item, add removeItem function in `Todos` and `Goals` component and pass the data to `List`.
+
 
 17. Toggle item.
     1) Add `toggleItem` function in `Todo` component which takes `id`. And pass the function to List.
 
     2) Add `onClick` for the span in `List` component as you can cross out when you click the added list item.
 
+
 18. Delete unnecessary lines.
     1) As you've added all React components and JSX, there are many lines of code that you can delete - html elements (not React JSX) and custom Redux codes.
+
+
+19. Add API.
+    1) Install API in index.html - This is a fake database provided by Udacity.
+
+    2) Add behavior that when the app loads, `console.log` all of the todos and all of the goals that reside in the fake database. Since all API methods are promise-based, you can use `PromiseAll()` to wait until all Promises have resolved before displaying the content to the user.
