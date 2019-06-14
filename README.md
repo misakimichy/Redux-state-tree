@@ -115,11 +115,11 @@ In this lesson, created custom Redux code first.
 
     2) Add `<div>` with `id=app` so that you can update the element via JavaScript code.
 
-    3) Add babel codes after index.js line in index.html. Make classes names `App`, `Todos` and `Goals`.
+    3) Add babel codes after index.js line in index.html. Make three components names `App`, `Todos` and `Goals`.
 
     4) Create React ver of UI (The one you're seeing on the screen is written by vanilla JavaScript).
 
-    5) Use uncontrolled component for the Todo class input field. For the onClick event of add buttons, create `addItem` function. What we wrote for adding item with JavaScript is dispatching the action.
+    5) Use uncontrolled component for the `Todo` component input field. For the onClick event of add buttons, create `addItem` function. What we wrote for adding item with JavaScript is dispatching the action.
 
     6) Pass `store` as `App`'s props.
 
@@ -129,13 +129,13 @@ In this lesson, created custom Redux code first.
 
 
 15. Add componentDidMount
-    1) Add `componentDidMount` to `App` class. Call `store.subscribe` inside of it and use `forceUpdate()` to re-render.
+    1) Add `componentDidMount` to `App` component. Call `store.subscribe` inside of it and use `forceUpdate()` to re-render.
 
-    2) To do that. need to grab `store` which is comes from this.props, and `todos` and `goals` which is from `store.getState()`.
+    2) To do that. need to grab `store` which is comes from `this.props`, and `todos` and `goals` which is from `store.getState()`.
 
 16. Add List UI.
     1) Use map method and loop through items then show `item.name` inside of `List` component. To do that, It's needed to pass `this.props.todos` to `List` component both in `Todos` and `Goals` component.
 
     2) Add delete button for the list items. When the button is clicked, remove the item. To remove the item, add removeItem function in `Todos` and `Goals` component and pass the data to `List`.
 
-    
+17. Toggle item.
