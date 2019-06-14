@@ -132,3 +132,10 @@ In this lesson, created custom Redux code first.
     1) Add `componentDidMount` to `App` class. Call `store.subscribe` inside of it and use `forceUpdate()` to re-render.
 
     2) To do that. need to grab `store` which is comes from this.props, and `todos` and `goals` which is from `store.getState()`.
+
+16. Add List UI.
+    1) Use map method and loop through items then show `item.name` inside of `List` component. To do that, It's needed to pass `this.props.todos` to `List` component both in `Todos` and `Goals` component.
+
+    2) Add delete button for the list items. When the button is clicked, remove the item. To remove the item, add removeItem function in `Todos` and `Goals` component and pass the data to `List`.
+
+    
