@@ -139,3 +139,9 @@ In this lesson, created custom Redux code first.
     2) Add delete button for the list items. When the button is clicked, remove the item. To remove the item, add removeItem function in `Todos` and `Goals` component and pass the data to `List`.
 
 17. Toggle item.
+    1) Add `toggleItem` function in `Todo` component which takes `id`. And pass the function to List.
+
+    2) Add `onClick` for the span in `List` component as you can cross out when you click the added list item.
+
+18. Delete unnecessary lines.
+    1) As you've added all React components and JSX, there are many lines of code that you can delete. You don't need elements that you write at step 4 1). And in index.js, you can delete from 205 to the end. (I comment them out so that I can come back and reflect.)
