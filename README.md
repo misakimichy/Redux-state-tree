@@ -154,3 +154,13 @@ In this lesson, created custom Redux code first.
     1) Install API in index.html - This is a fake database provided by Udacity.
 
     2) Add behavior that when the app loads, `console.log` all of the todos and all of the goals that reside in the fake database. Since all API methods are promise-based, you can use `PromiseAll()` to wait until all Promises have resolved before displaying the content to the user.
+
+
+20. Tell Redux store about data
+    1) Tell Redux store about `todos` and `goals` data that you fetched (step 19). Create a new action creator names `receiveDataAction` and passes `todos` and `goals`.
+
+    2) Add `case RECEIVE_DATA` for `todos` and `goals`, they returns `action.todos` and `action.goals`.
+
+    3) In App component, instead of logging todos and goals, call `store.dispatch(receiveDataAction(todos, goals))`
+
+    4) When you refresh the webpage and two seconds later, you'll get initial todo and goal list.
