@@ -165,6 +165,7 @@ In this lesson, created custom Redux code first.
 
     4) When you refresh the webpage and two seconds later, you'll get initial todo and goal list.
 
+
 21. Add loading indicator.
     1) Currently, there is a delay before any of the data appears on the screen but you'll see input field and buttons. To prevent this, make a new reducer, which is in charge of the loading state for the app. New function name is `loading` and return false when `RECEIVE_DATA` is dispatched.
 
@@ -173,3 +174,12 @@ In this lesson, created custom Redux code first.
     3) Inside of `App` component, we're also receiving `loading` from `store.getState()`.
 
     4) Add if statement to show loading heading in the page if the loading is true.
+
+
+22. Update API - Optimistic Updates
+    1) Now when you delete item, it removed from the list item but API hasn't updated. To update API, you need to call `API.deleteTodo`.
+
+    2) To prevent the time delay between data and UI, dispatch `removeTodoAction` then return `API.deleteTodo`. If there's an error, dispatch `addTodoAction` and show an error message.
+
+    3) Update `removeItem`, `toggleItem` for `Todos` component and `removeItem` for `Goals` component optimistically.
+    
