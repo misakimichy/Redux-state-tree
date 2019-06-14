@@ -156,7 +156,7 @@ In this lesson, created custom Redux code first.
     2) Add behavior that when the app loads, `console.log` all of the todos and all of the goals that reside in the fake database. Since all API methods are promise-based, you can use `PromiseAll()` to wait until all Promises have resolved before displaying the content to the user.
 
 
-20. Tell Redux store about data
+20. Tell Redux store about data.
     1) Tell Redux store about `todos` and `goals` data that you fetched (step 19). Create a new action creator names `receiveDataAction` and passes `todos` and `goals`.
 
     2) Add `case RECEIVE_DATA` for `todos` and `goals`, they returns `action.todos` and `action.goals`.
@@ -164,3 +164,12 @@ In this lesson, created custom Redux code first.
     3) In App component, instead of logging todos and goals, call `store.dispatch(receiveDataAction(todos, goals))`
 
     4) When you refresh the webpage and two seconds later, you'll get initial todo and goal list.
+
+21. Add loading indicator.
+    1) Currently, there is a delay before any of the data appears on the screen but you'll see input field and buttons. To prevent this, make a new reducer, which is in charge of the loading state for the app. New function name is `loading` and return false when `RECEIVE_DATA` is dispatched.
+
+    2) Add `loading` function to the store.
+
+    3) Inside of `App` component, we're also receiving `loading` from `store.getState()`.
+
+    4) Add if statement to show loading heading in the page if the loading is true.
