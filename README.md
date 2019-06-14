@@ -1,8 +1,8 @@
 # Todo and Goal List
 
 ## Instructions
-This is a Redux lesson of Udacity React Nanodegree. It's a personal note how index.js was built. I also left all the comments and old codes in index.js.
-The basic flow is create the store, merge state with UI, convert it to Redux then add middleware.
+This is a Redux lesson of Udacity React Nanodegree. It's a personal note how index.js was built.
+The basic flow is create the store, merge state with UI, convert it to Redux, add middleware, Redux with React then add API.
 
 In this lesson, created custom Redux code first.
 
@@ -144,4 +144,4 @@ In this lesson, created custom Redux code first.
     2) Add `onClick` for the span in `List` component as you can cross out when you click the added list item.
 
 18. Delete unnecessary lines.
-    1) As you've added all React components and JSX, there are many lines of code that you can delete. You don't need elements that you write at step 4 1). And in index.js, you can delete from 205 to the end. (I comment them out so that I can come back and reflect.)
+    1) As you've added all React components and JSX, there are many lines of code that you can delete - html elements (not React JSX) and custom Redux codes.
