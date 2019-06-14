@@ -201,120 +201,121 @@ const store = Redux.createStore(Redux.combineReducers({
     goals,
 }), Redux.applyMiddleware(checker, logger));
 
-// When subscribe happens (part of the state changes), get the current state.
-store.subscribe (() => {
-    const { goals, todos } = store.getState()
 
-    // Reset goals and todos every time the state has changed. 
-    document.getElementById('goals').innerHTML = '';
-    document.getElementById('todos').innerHTML = '';
+// // When subscribe happens (part of the state changes), get the current state.
+// store.subscribe (() => {
+//     const { goals, todos } = store.getState()
 
-    goals.forEach(addGoalToDOM)
-    todos.forEach(addTodoToDOM)
-})
+//     // Reset goals and todos every time the state has changed.
+//     document.getElementById('goals').innerHTML = '';
+//     document.getElementById('todos').innerHTML = '';
 
-// store.dispatch(addTodoAction({
-//     id: 0,
-//     name: 'Learn Redux',
-//     complete: false
-// }))
+//     goals.forEach(addGoalToDOM)
+//     todos.forEach(addTodoToDOM)
+// })
 
-// store.dispatch(addTodoAction({
-//     id: 1,
-//     name: 'Go to dentist',
-//     complete: false
-// }))
+// // store.dispatch(addTodoAction({
+// //     id: 0,
+// //     name: 'Learn Redux',
+// //     complete: false
+// // }))
 
-// store.dispatch(addTodoAction({
-//     id: 2,
-//     name: 'Call mom',
-//     complete: false
-// }))
+// // store.dispatch(addTodoAction({
+// //     id: 1,
+// //     name: 'Go to dentist',
+// //     complete: false
+// // }))
 
-// store.dispatch(removeTodoAction(1))
+// // store.dispatch(addTodoAction({
+// //     id: 2,
+// //     name: 'Call mom',
+// //     complete: false
+// // }))
 
-// store.dispatch(toggleTodoAction(0))
+// // store.dispatch(removeTodoAction(1))
 
-// store.dispatch(addGoalAction({
-//     id: 0,
-//     name: 'Finish React Nanodegree',
-// }))
+// // store.dispatch(toggleTodoAction(0))
 
-// store.dispatch(removeGoalAction(0))
+// // store.dispatch(addGoalAction({
+// //     id: 0,
+// //     name: 'Finish React Nanodegree',
+// // }))
 
-/*
-    When you execute the code above, what will happen is:
-    - the todo of id: 0 will be added
-    because we specified the action type 'ADD_TODO' in function todos.
-*/ 
+// // store.dispatch(removeGoalAction(0))
 
-// DOM code
-function addTodo() {
-    const input = document.getElementById('todo');
-    const name = input.value;
-    input.value = ''
+// /*
+//     When you execute the code above, what will happen is:
+//     - the todo of id: 0 will be added
+//     because we specified the action type 'ADD_TODO' in function todos.
+// */
 
-    store.dispatch(addTodoAction({
-        name,
-        complete: false,
-        id: generateId()
-    }))
-}
+// // DOM code
+// function addTodo() {
+//     const input = document.getElementById('todo');
+//     const name = input.value;
+//     input.value = ''
 
-function addGoal() {
-    const input = document.getElementById('goal');
-    const name = input.value;
-    input.value = ''
+//     store.dispatch(addTodoAction({
+//         name,
+//         complete: false,
+//         id: generateId()
+//     }))
+// }
+
+// function addGoal() {
+//     const input = document.getElementById('goal');
+//     const name = input.value;
+//     input.value = ''
     
-    store.dispatch(addGoalAction({
-        name,
-        id: generateId()
-    }))
-}
+//     store.dispatch(addGoalAction({
+//         name,
+//         id: generateId()
+//     }))
+// }
 
-document.getElementById('todoButton')
-    .addEventListener('click', addTodo)
+// document.getElementById('todoButton')
+//     .addEventListener('click', addTodo)
 
-document.getElementById('goalButton')
-    .addEventListener('click', addGoal)
+// document.getElementById('goalButton')
+//     .addEventListener('click', addGoal)
 
-// Add feature to remove item
-function createRemoveButton(onClick) {
-    const removeButton = document.createElement('button')
-    removeButton.innerHTML = 'X'
-    removeButton.addEventListener('click', onClick)
-    return removeButton
-}
+// // Add feature to remove item
+// function createRemoveButton(onClick) {
+//     const removeButton = document.createElement('button')
+//     removeButton.innerHTML = 'X'
+//     removeButton.addEventListener('click', onClick)
+//     return removeButton
+// }
 
-// Add function
-function addTodoToDOM(todo) {
-    const node = document.createElement('li')
-    const text = document.createTextNode(todo.name)
+// // Add function
+// function addTodoToDOM(todo) {
+//     const node = document.createElement('li')
+//     const text = document.createTextNode(todo.name)
 
-    const removeButton = createRemoveButton(() => {
-        store.dispatch(removeTodoAction(todo.id))
-    })
+//     const removeButton = createRemoveButton(() => {
+//         store.dispatch(removeTodoAction(todo.id))
+//     })
 
-    node.appendChild(text)
-    node.appendChild(removeButton)
+//     node.appendChild(text)
+//     node.appendChild(removeButton)
 
-    // If complete status is true, line-through the item
-    node.style.textDecoration = todo.complete ? 'line-through' : 'none'
-    node.addEventListener('click', () => {
-        store.dispatch(toggleTodoAction(todo.id))
-    })
+//     // If complete status is true, line-through the item
+//     node.style.textDecoration = todo.complete ? 'line-through' : 'none'
+//     node.addEventListener('click', () => {
+//         store.dispatch(toggleTodoAction(todo.id))
+//     })
 
-    document.getElementById('todos').appendChild(node)
-}
+//     document.getElementById('todos').appendChild(node)
+// }
 
-function addGoalToDOM(goal) {
-    const node = document.createElement('li')
-    const text = document.createTextNode(goal.name)
-    const removeButton = createRemoveButton(() => {
-        store.dispatch(removeGoalAction(goal.id))
-    })
+// function addGoalToDOM(goal) {
+//     const node = document.createElement('li')
+//     const text = document.createTextNode(goal.name)
+//     const removeButton = createRemoveButton(() => {
+//         store.dispatch(removeGoalAction(goal.id))
+//     })
 
-    node.appendChild(text)
-    node.appendChild(removeButton)
-    document.getElementById('goals').append(node)
-}
+//     node.appendChild(text)
+//     node.appendChild(removeButton)
+//     document.getElementById('goals').append(node)
+// }
