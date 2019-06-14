@@ -124,3 +124,11 @@ In this lesson, created custom Redux code first.
     6) Pass `store` as `App`'s props.
 
     7) You can import `store.dispatch` from vanilla JavaScript. But since you've passed store as a App's props, swap it with `this.props.store.dispatch`.
+
+    8) Use uncontrolled component to `class Goal` too.
+
+
+15. Add componentDidMount
+    1) Add `componentDidMount` to `App` class. Call `store.subscribe` inside of it and use `forceUpdate()` to re-render.
+
+    2) To do that. need to grab `store` which is comes from this.props, and `todos` and `goals` which is from `store.getState()`.
