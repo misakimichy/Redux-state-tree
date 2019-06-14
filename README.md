@@ -182,4 +182,7 @@ In this lesson, created custom Redux code first.
     2) To prevent the time delay between data and UI, dispatch `removeTodoAction` then return `API.deleteTodo`. If there's an error, dispatch `addTodoAction` and show an error message.
 
     3) Update `removeItem`, `toggleItem` for `Todos` component and `removeItem` for `Goals` component optimistically.
+
+23.  Update API - No Optimistic Update
+    1) You also need to update API of `addItem` of `Todos` and `Goals` components. For here, you don't need to use optimistic update because the id is being generated on the server for us, so we could figure out a way to add it back to our Redux store if the request fell.
     
