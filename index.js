@@ -117,6 +117,15 @@ function goals (state = [], action) {
     }
 }
 
+function loading (state = true, action) {
+    switch(action.type){
+        case RECEIVE_DATA :
+            return false
+        default :
+            return state
+    }
+}
+
 /*
     Add a middleware
     Check the specific word and if user typed in the word, show alert.
@@ -153,4 +162,5 @@ const logger = store => next => action => {
 const store = Redux.createStore(Redux.combineReducers({
     todos,
     goals,
+    loading,
 }), Redux.applyMiddleware(checker, logger));
