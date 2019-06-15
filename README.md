@@ -203,3 +203,14 @@ In this lesson, created custom Redux code first.
     3) Also thunkfy the `removeItem` of `Goals`, `addItem` and `toggleItem` of `Todos` components.
 
     4) One last component which hasn't thunkfied yet is the main component `App`. Create `handleInitialData` and the flow is the same.
+
+
+26. Add Context API
+    1) Create `createContext()`. `Context` has Provider and Consumer props now.
+
+    2) Set up `Provider`. Since we want to pass `store` to children, we pass `this.props.store`.
+
+    3) Render `<Provider>` instead of `<App>` in `ReactDOM.render()` and pass `store` to the Provider. `App` doesn't need `store` anymore.
+    
+    4) Use Connected component because `App` needs to use `store` not just to render but also in `componentDidMount` method.
+    
