@@ -39,14 +39,10 @@
         class Todos extends React.Component {
             addItem = event => {
                 event.preventDefault();
-
-                return API.saveTodo(this.input.value)
-                    .then(todo => {
-                        this.props.store.dispatch(addTodoAction(todo))
-                        this.input.value = '';
-                    }).catch(() => {
-                        alert("An error occurred. Try again.")
-                    })
+                this.props.store.dispatch(handleAddTodo(
+                    this.input.value,
+                    () => this.input.value = ''
+                ))
             }
 
             // Update both API and store

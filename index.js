@@ -58,7 +58,7 @@ function receiveDataAction (todos, goals) {
 }
 
 function handleDeleteTodo (todo) {
-    return (dispatch) => {
+    return dispatch => {
         dispatch(removeTodoAction(todo.id))
 
         return API.deleteTodo(todo.id)
@@ -70,7 +70,7 @@ function handleDeleteTodo (todo) {
 }
 
 function handleAddGoal (name, cb) {
-    return (dispatch) => {
+    return dispatch => {
         return API.saveGoal(name)
         .then(goal => {
             dispatch(addGoalAction(goal))
@@ -90,7 +90,19 @@ function handleDeleteGoal (goal) {
                 dispatch(addGoalAction(goal))
                 alert("An error occurred. Try again.")
             })
+    }
 }
+
+function handleAddTodo (name, cb) {
+    return dispatch => {
+        return API.saveTodo(name)
+        .then(todo => {
+            dispatch(addTodoAction(todo))
+            cb()
+        }).catch(() => {
+            alert("An error occurred. Try again.")
+        })
+    }
 }
 
 // Creat e a reducer function  = app codes
@@ -154,7 +166,7 @@ function goals (state = [], action) {
 }
 
 function loading (state = true, action) {
-    switch(action.type){
+    switch(action.type) {
         case RECEIVE_DATA :
             return false
         default :
