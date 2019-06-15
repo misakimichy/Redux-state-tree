@@ -213,4 +213,6 @@ In this lesson, created custom Redux code first.
     3) Render `<Provider>` instead of `<App>` in `ReactDOM.render()` and pass `store` to the Provider. `App` doesn't need `store` anymore.
     
     4) Use Connected component because `App` needs to use `store` not just to render but also in `componentDidMount` method.
-    
+
+    5) Convert `Todos` and `Goals` components to use Context API. Don't forget to pass `ConnectedTodos` and `ConnectedGoals` in `App` component instead of `Todos` and `Goals`.
+
