@@ -111,13 +111,8 @@
             componentDidMount() {
                 const { store } = this.props
 
-                Promise.all([
-                    API.fetchTodos(),
-                    API.fetchGoals()
-                ]).then(([todos, goals]) => {
-                    store.dispatch(receiveDataAction(todos, goals))
-                })
-            
+                store.dispatch(handleInitialData())
+                
                 // Re-render whenever the store changes.
                 store.subscribe(() => this.forceUpdate())
             }

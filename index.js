@@ -116,6 +116,17 @@ function handleToggleTodo (id) {
     }
 }
 
+function handleInitialData () {
+    return dispatch => {
+        return Promise.all([
+            API.fetchTodos(),
+            API.fetchGoals()
+        ]).then(([todos, goals]) => {
+            dispatch(receiveDataAction(todos, goals))
+        })
+    }
+}
+
 // Creat e a reducer function  = app codes
 // When this reducer is called state creates an empty array inside of an empty object.
 function todos (state = [], action) {
