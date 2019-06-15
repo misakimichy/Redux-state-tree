@@ -105,6 +105,17 @@ function handleAddTodo (name, cb) {
     }
 }
 
+function handleToggleTodo (id) {
+    return dispatch => {
+        dispatch(toggleTodoAction(id))
+            return  API.saveTodoToggle(id)
+                .catch(() => {
+                        dispatch(toggleTodoAction(id))
+                        alert("An error occurred. Try again.")
+                    })
+    }
+}
+
 // Creat e a reducer function  = app codes
 // When this reducer is called state creates an empty array inside of an empty object.
 function todos (state = [], action) {
