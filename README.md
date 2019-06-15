@@ -194,4 +194,10 @@ In this lesson, created custom Redux code first.
 
     3) If the action equals to 'function' not an object, we want to invoke that action passing store.dispatch, and if not, just invoke next passing it the action. (= middleware). This pattern is very common so you can use Redux-thunk and add `ReduxThunk.default` to the first argument inside of `createStore`.
 
-    
+
+25. Thunkfy addItem
+    1) Thunkfy `addItem` of `Goals` component. It's basically same flow as step 24. First make a new action creator, `handleAddGoal` and for the first argument pass the goal name which is `this.input.value` and for the second argument, using callback function and empty `this.input.value`.
+
+    2) Create the `handleAddGoal` action creator. Pass name and cb (callback function) as arguments. Don't forget to invoke `cb()` inside of the action creator.
+
+    3) Also thunkfy the `removeItem` of `Goals` component.
