@@ -57,6 +57,18 @@ function receiveDataAction (todos, goals) {
     }
 }
 
+function handleDeleteTodo (todo) {
+    return (dispatch) => {
+        dispatch(removeTodoAction(todo.id))
+
+        return API.deleteTodo(todo.id)
+            .catch(() => {
+                dispatch(addTodoAction(todo))
+                alert("An error occurred. Try again.")
+            })
+    }
+}
+
 // Creat e a reducer function  = app codes
 // When this reducer is called state creates an empty array inside of an empty object.
 function todos (state = [], action) {
@@ -163,4 +175,4 @@ const store = Redux.createStore(Redux.combineReducers({
     todos,
     goals,
     loading,
-}), Redux.applyMiddleware(checker, logger));
+}), Redux.applyMiddleware(ReduxThunk.default, checker, logger));
