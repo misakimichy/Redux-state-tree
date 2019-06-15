@@ -185,4 +185,13 @@ In this lesson, created custom Redux code first.
 
 23.  Update API - No Optimistic Update
     1) You also need to update API of `addItem` of `Todos` and `Goals` components. For here, you don't need to use optimistic update because the id is being generated on the server for us, so we could figure out a way to add it back to our Redux store if the request fell.
+
+
+24. Add Redux-thunk
+    1) All the component logics are kind of messy right now since both UI logic and fetching data logic live together. To separate these, UI logic lives in Components and fetching data logic lives in Action Creators, you can use Redux-thunk. Add Redux-thunk script in index.html
+
+    2) Create a new Action Creator, `handleDeleteTodo` (normally returns an object which includes action type) and call it in `removeItem` of `Todos` component. `handleDeleteTodo` returns dispatch and `API.deleteTodo`.
+
+    3) If the action equals to 'function' not an object, we want to invoke that action passing store.dispatch, and if not, just invoke next passing it the action. (= middleware). This pattern is very common so you can use Redux-thunk and add `ReduxThunk.default` to the first argument inside of `createStore`.
+
     
