@@ -145,30 +145,6 @@ function todos (state = [], action) {
         default :
             return state;
     }
-
-    /*  The above statement is same as the following if statement.
-
-        if(action.type === 'ADD_TODO') {
-            // Update state through the action occurred
-            return state.concat([action.todo]);
-
-        } else if(action.type === 'REMOVE_TODO') {
-            // Filter out todo which doesn't have action
-            return state.filter(todo =>
-                todo.id !== action.id)
-
-        } else if(action.type === 'TOGGLE_TODO') {
-            // Update the complete property from false to true
-            return state.map(todo =>
-                todo.id !== action.id ? todo
-                // Create a new empty object and merge with todo
-                // except for complete which is going to be the opposite of what complete currently is
-                : Object.assign({}, todo, {complete: !todo.complete}))
-
-        } else {
-            return state;
-        }
-    */ 
 }
 
 // Second reducer function.
