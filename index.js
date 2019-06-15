@@ -57,6 +57,7 @@ function receiveDataAction (todos, goals) {
     }
 }
 
+// Thunk action creator to separate UI logic and fetching data logic
 function handleDeleteTodo (todo) {
     return dispatch => {
         dispatch(removeTodoAction(todo.id))
