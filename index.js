@@ -69,6 +69,30 @@ function handleDeleteTodo (todo) {
     }
 }
 
+function handleAddGoal (name, cb) {
+    return (dispatch) => {
+        return API.saveGoal(name)
+        .then(goal => {
+            dispatch(addGoalAction(goal))
+            cb();
+        }).catch(() => {
+            alert("An error occurred. Try again.")
+        })
+    }
+}
+
+function handleDeleteGoal (goal) {
+    return dispatch => {
+        dispatch(removeGoalAction(goal.id))
+
+        return API.deleteGoal(goal.id)
+            .catch(() => {
+                dispatch(addGoalAction(goal))
+                alert("An error occurred. Try again.")
+            })
+}
+}
+
 // Creat e a reducer function  = app codes
 // When this reducer is called state creates an empty array inside of an empty object.
 function todos (state = [], action) {
