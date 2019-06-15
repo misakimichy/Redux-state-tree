@@ -200,4 +200,4 @@ In this lesson, created custom Redux code first.
 
     2) Create the `handleAddGoal` action creator. Pass name and cb (callback function) as arguments. Don't forget to invoke `cb()` inside of the action creator.
 
-    3) Also thunkfy the `removeItem` of `Goals` component.
+    3) Also thunkfy the `removeItem` of `Goals`, `addItem` and `toggleItem` of `Todos` components.
