@@ -217,3 +217,10 @@ In this lesson, created custom Redux code first.
 
     5) Convert `Todos` and `Goals` components to use Context API. Don't forget to pass `ConnectedTodos` and `ConnectedGoals` in `App` component instead of `Todos` and `Goals`.
 
+
+27. Add Connected Function.
+    1) Create connect function for `App`, `ConnectedGoals` and `ConnectedTodos` components. You need to tell two things to it, what component it needs to render and ay data that it needs from the store. Add the data you want to use in `App`, `Todos` and `Goals` in the connected functions.
+
+    2) Delete context API codes. You don't need these lines because you've added the connected function.
+
+    3) Replace `store` to `state` in connected functions.
