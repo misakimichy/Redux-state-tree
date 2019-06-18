@@ -75,7 +75,7 @@
             }
         }
 
-        const connectedTodos = connect(state => ({
+        const ConnectedTodos = connect(state => ({
             todos: state.todos,
         }))(Todos);
 
@@ -112,7 +112,7 @@
             }
         }
 
-        const connectedGoals = connect(state => ({
+        const ConnectedGoals = connect(state => ({
             goals: state.goals,
         }))(Goals);
 
@@ -140,8 +140,6 @@
         const ConnectedApp = connect(state => ({
             loading: state.loading,
         }))(App);
-
-        const Context = React.createContext();
 
         function connect(mapStateToProps) {
             return Component => {
@@ -175,6 +173,8 @@
                 return ConnectedComponent
             }
         }
+
+        const Context = React.createContext();
 
         class Provider extends React.Component {
             render () {
