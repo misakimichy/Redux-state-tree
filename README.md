@@ -226,5 +226,15 @@ In this lesson, created custom Redux code first.
     3) Replace `store` to `state` in connected functions.
 
 
-28. Get the state from Context
+28. Get the state from Context.
     1) Create connect function which takes `mapStateToProps` and create two classes `Receiver` and `ConnectedComponent` in it.
+
+
+29. Add react-redux library.
+    1) Step 26 - 28 is pretty common so you can use library. Add a `<script>` in `<head>` to install react-redux library.
+
+    2) You can delete connect implementation function (step 28), the provider (step 26).
+
+    3) Replace own provider to `ReactRedux.Provider`.
+
+    4) Replace `connect()` to `ReactRedux.connect()`.
