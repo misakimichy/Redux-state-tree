@@ -224,3 +224,7 @@ In this lesson, created custom Redux code first.
     2) Delete context API codes. You don't need these lines because you've added the connected function.
 
     3) Replace `store` to `state` in connected functions.
+
+
+28. Get the state from Context
+    1) Create connect function which takes `mapStateToProps` and create two classes `Receiver` and `ConnectedComponent` in it.
