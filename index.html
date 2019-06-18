@@ -158,7 +158,7 @@
                     render() {
                         const { dispatch, getState } = this.props.store
                         const state = getState()
-                        const stateNeeded = mapStateToProps(state) 
+                        const stateNeeded = mapStateToProps(state)
                         return <Component {...stateNeeded} dispatch={dispatch} />
                     }
                 }
