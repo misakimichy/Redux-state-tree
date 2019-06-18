@@ -105,7 +105,7 @@ In this lesson, created custom Redux code first.
 
     3) Invoke `next(action)` here as if we are dispatching the action here. That'll allow me to get new state in the next line. Then finally it returns the result we got by invoking next.
 
-    4) Since I added one more middleware, add `logger` to `applyMiddleware`'s second argument.
+    4) Sdd `logger` to `applyMiddleware`'s second argument since I added one more middleware.
 
     5) Now once `createStore` is called, before it hits reducers, it invokes `checker` and `logger` middleware.
 
@@ -176,18 +176,19 @@ In this lesson, created custom Redux code first.
     4) Add if statement to show loading heading in the page if the loading is true.
 
 
-22. Update API - Optimistic Updates
+22. Update API - Optimistic Updates.
     1) Now when you delete item, it removed from the list item but API hasn't updated. To update API, you need to call `API.deleteTodo`.
 
     2) To prevent the time delay between data and UI, dispatch `removeTodoAction` then return `API.deleteTodo`. If there's an error, dispatch `addTodoAction` and show an error message.
 
     3) Update `removeItem`, `toggleItem` for `Todos` component and `removeItem` for `Goals` component optimistically.
 
-23.  Update API - No Optimistic Update
+
+23.  Update API - No Optimistic Update.
     1) You also need to update API of `addItem` of `Todos` and `Goals` components. For here, you don't need to use optimistic update because the id is being generated on the server for us, so we could figure out a way to add it back to our Redux store if the request fell.
 
 
-24. Add Redux-thunk
+24. Add Redux-thunk.
     1) All the component logics are kind of messy right now since both UI logic and fetching data logic live together. To separate these, UI logic lives in Components and fetching data logic lives in Action Creators, you can use Redux-thunk. Add Redux-thunk script in index.html
 
     2) Create a new Action Creator, `handleDeleteTodo` (normally returns an object which includes action type) and call it in `removeItem` of `Todos` component. `handleDeleteTodo` returns dispatch and `API.deleteTodo`.
@@ -195,7 +196,7 @@ In this lesson, created custom Redux code first.
     3) If the action equals to 'function' not an object, we want to invoke that action passing store.dispatch, and if not, just invoke next passing it the action. (= middleware). This pattern is very common so you can use Redux-thunk and add `ReduxThunk.default` to the first argument inside of `createStore`.
 
 
-25. Thunkfy the Components
+25. Thunkfy Components.
     1) Thunkfy `addItem` of `Goals` component. It's basically same flow as step 24. First make a new action creator, `handleAddGoal` and for the first argument pass the goal name which is `this.input.value` and for the second argument, using callback function and empty `this.input.value`.
 
     2) Create the `handleAddGoal` action creator. Pass name and cb (callback function) as arguments. Don't forget to invoke `cb()` inside of the action creator.
@@ -205,7 +206,7 @@ In this lesson, created custom Redux code first.
     4) One last component which hasn't thunkfied yet is the main component `App`. Create `handleInitialData` and the flow is the same.
 
 
-26. Add Context API
+26. Add Context API.
     1) Create `createContext()`. `Context` has Provider and Consumer props now.
 
     2) Set up `Provider`. Since we want to pass `store` to children, we pass `this.props.store`.
