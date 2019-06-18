@@ -147,18 +147,18 @@
             return Component => {
                 class Receiver extends React.Component {
                     componentDidMount() {
-                        const {subscribe } = this.props.store
+                        const {subscribe } = this.props.store;
                         this.unsubscribe = subscribe(() => {
-                            this.forceUpdate()
+                            this.forceUpdate();
                         })
                     }
-                    componentWillUnmount () {
-                        this.unsubscribe()
+                    componentWillUnmount() {
+                        this.unsubscribe();
                     }
                     render() {
-                        const { dispatch, getState } = this.props.store
+                        const { dispatch, getState } = this.props.store;
                         const state = getState()
-                        const stateNeeded = mapStateToProps(state)
+                        const stateNeeded = mapStateToProps(state);
                         return <Component {...stateNeeded} dispatch={dispatch} />
                     }
                 }
@@ -169,7 +169,7 @@
                             <Context.Consumer>
                                 {store => <Receiver store={store} />}
                             </Context.Consumer>
-                        )
+                        );
                     }
                 }
                 return ConnectedComponent
@@ -182,7 +182,7 @@
                     <Context.Provider value={this.props.store}>
                         {this.props.children}
                     </Context.Provider>
-                )
+                );
             }
         }
 
