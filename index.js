@@ -58,18 +58,6 @@ function receiveDataAction (todos, goals) {
 }
 
 // Thunk action creator to separate UI logic and fetching data logic
-function handleDeleteTodo (todo) {
-    return dispatch => {
-        dispatch(removeTodoAction(todo.id))
-
-        return API.deleteTodo(todo.id)
-            .catch(() => {
-                dispatch(addTodoAction(todo))
-                alert("An error occurred. Try again.")
-            })
-    }
-}
-
 function handleAddGoal (name, cb) {
     return dispatch => {
         return API.saveGoal(name)
@@ -103,6 +91,18 @@ function handleAddTodo (name, cb) {
         }).catch(() => {
             alert("An error occurred. Try again.")
         })
+    }
+}
+
+function handleDeleteTodo (todo) {
+    return dispatch => {
+        dispatch(removeTodoAction(todo.id))
+
+        return API.deleteTodo(todo.id)
+            .catch(() => {
+                dispatch(addTodoAction(todo))
+                alert("An error occurred. Try again.")
+            })
     }
 }
 
