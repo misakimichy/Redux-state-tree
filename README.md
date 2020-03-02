@@ -29,7 +29,7 @@ In this lesson, created custom Redux code first.
     2) To prevent typos, save each action type string in variables and pass those variables in each Action Creator.
 
 
-4. Connect index.js with index.html
+4. Connect index.js with index.html.
     1) Add elements for todo and goal list.
     
     2) Connect index.js in `index.html`.
@@ -76,7 +76,7 @@ In this lesson, created custom Redux code first.
     5) Pass `Redux.combineReducers({})` to the `Redux.createStore`. Inside of the object, add reducers that you wanna combine. This time, it's todos and goals.
 
 
-11. Create a function to avoid a specific word,
+11. Create a function to avoid a specific word.
     1) Add a function named `checkAndDispatch`.
 
     2) This function should be hooked into the moment after an action is dispatched, but before it ever hits our reducer and modifies the state.
